@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BANSIRIX — Gestionare Oferte, Facturi & Lucrări</title>
+  <meta name="description" content="Aplicația pentru firme mici din România. Oferte de preț, facturi proforme, gestionare lucrări, semnătură digitală și scanare AI — totul într-un singur loc." />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080B0F;
+      --surface: #0F1318;
+      --surface2: #161B22;
+      --border: rgba(255,255,255,0.06);
+      --accent: #2BC0AE;
+      --accent2: #1A9E8F;
+      --text: #E8EDF2;
+      --text-muted: #6B7685;
+      --text-dim: #9AA5B4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 0%, rgba(43,192,174,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(43,192,174,0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,11,15,0.85);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: #000 !important;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px !important;
+    }
+
+    .nav-cta:hover { background: var(--accent2) !important; color: #000 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(43,192,174,0.08);
+      border: 1px solid rgba(43,192,174,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #000;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .store-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .store-badge:hover { border-color: var(--accent); }
+
+    .store-badge-icon { font-size: 22px; }
+
+    .store-badge-text { text-align: left; }
+
+    .store-badge-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      display: block;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .store-badge-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── FEATURES ── */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(24px, 4vw, 36px);
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-title span { color: var(--accent); }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--text-dim);
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 56px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(43,192,174,0.3);
+      transform: translateY(-2px);
+    }
+
+    .feature-card.featured {
+      border-color: rgba(43,192,174,0.25);
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(43,192,174,0.04) 100%);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(43,192,174,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .feature-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
+      opacity: 0.2;
+    }
+
+    .step-item {
+      text-align: center;
+      padding: 24px 16px;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(43,192,174,0.08);
+      border: 1.5px solid rgba(43,192,174,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 auto 16px;
+    }
+
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+    }
+
+    .plan-card.premium {
+      border-color: rgba(43,192,174,0.35);
+      background: linear-gradient(160deg, var(--surface) 0%, rgba(43,192,174,0.06) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--accent);
+      color: #000;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .plan-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .plan-price {
+      font-family: 'Syne', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .plan-price span {
+      font-size: 16px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .plan-price-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .plan-features li:last-child { border-bottom: none; }
+
+    .plan-check { color: var(--accent); font-size: 14px; flex-shrink: 0; }
+    .plan-x { color: var(--text-muted); font-size: 14px; flex-shrink: 0; opacity: 0.5; }
+
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .plan-btn-free {
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+
+    .plan-btn-free:hover { border-color: var(--accent); color: var(--accent); }
+
+    .plan-btn-premium {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .plan-btn-premium:hover { background: var(--accent2); }
+
+    /* ── FOR WHO ── */
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .who-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .who-icon { font-size: 32px; margin-bottom: 12px; }
+
+    .who-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .who-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-card {
+      background: var(--surface);
+      border: 1px solid rgba(43,192,174,0.2);
+      border-radius: 24px;
+      padding: 64px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(43,192,174,0.08) 0%, transparent 70%);
+    }
+
+    .cta-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .cta-card p {
+      font-size: 15px;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: var(--accent);
+    }
+
+    .footer-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      .cta-card { padding: 40px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="wrapper">
+      <div class="nav-inner">
+        <a href="/" class="nav-logo">BANSIRIX</a>
+        <div class="nav-links">
+          <a href="#functii">Funcții</a>
+          <a href="#cum-functioneaza">Cum funcționează</a>
+          <a href="#preturi">Prețuri</a>
+          <a href="#download" class="nav-cta">Descarcă gratuit</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrapper">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Disponibil pe Android
+      </div>
+
+      <h1>Gestionează-ți afacerea<br /><span>simplu și rapid</span></h1>
+
+      <p class="hero-sub">
+        Oferte de preț, facturi proforme, lucrări și clienți — totul într-o singură aplicație mobilă, construită pentru firme mici din România.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#download" class="btn-primary">
+          ↓ Descarcă gratuit
+        </a>
+        <a href="#functii" class="btn-secondary">
+          Vezi funcțiile →
+        </a>
+      </div>
+
+      <div class="store-badges" id="download">
+        <a href="#" class="store-badge">
+          <span class="store-badge-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3DDC84" xmlns="http://www.w3.org/2000/svg"><path d="M17.523 15.3414c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m-11.046 0c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg></span>
+          <div class="store-badge-text">
+            <span class="store-badge-sub">Disponibil pe</span>
+            <span class="store-badge-name">Google Play</span>
+          </div>
+        </a>
+        <a href="#" class="store-badge" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
+          <span class="store-badge-icon" style="font-size:22px;"></span>
+          <div class="store-badge-text">
+            <span class="store-badge-sub">În curând pe</span>
+            <span class="store-badge-name">App Store</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrapper">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-value">100%</div>
+          <div class="stat-label">Date securizate în cloud</div>
+        </div>
+        <div>
+          <div class="stat-value">€4,99</div>
+          <div class="stat-label">Plan premium / lună</div>
+        </div>
+        <div>
+          <div class="stat-value">AI</div>
+          <div class="stat-label">Scanare documente automată</div>
+        </div>
+        <div>
+          <div class="stat-value">GDPR</div>
+          <div class="stat-label">Conform regulamentelor UE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" id="functii">
+    <div class="wrapper">
+      <div class="section-label">Funcționalități</div>
+      <h2 class="section-title">Tot ce ai nevoie<br /><span>într-o singură aplicație</span></h2>
+      <p class="section-sub">Construit special pentru meșteri, instalatori, constructori și firme mici din România.</p>
+
+      <div class="features-grid">
+
+        <div class="feature-card featured">
+          <div class="feature-icon">📋</div>
+          <div class="feature-title">Oferte de preț profesionale</div>
+          <p class="feature-desc">Creează și trimite oferte detaliate cu produse din catalogul tău, valoare totală, TVA și semnătură digitală. Generare PDF instant.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🧾</div>
+          <div class="feature-title">Facturi proforme</div>
+          <p class="feature-desc">Emite proforme direct din ofertele acceptate. Documentele sunt gata de trimis sau de tipărit în câteva secunde.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <div class="feature-title">Gestionare lucrări</div>
+          <p class="feature-desc">Planifică și urmărește progresul lucrărilor. Statusuri clare, calendar integrat și notificări pentru fiecare termen.</p>
+        </div>
+
+        <div class="feature-card featured">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-title">Scanare AI documente</div>
+          <p class="feature-desc">Fotografiază o factură de la furnizor și produsele sunt extrase automat în catalogul tău. Economisești ore de introducere manuală.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <div class="feature-title">Semnătură digitală</div>
+          <p class="feature-desc">Clientul semnează direct pe ecranul telefonului. Oferta semnată e stocată automat și poate fi descărcată oricând.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <div class="feature-title">Bază de clienți</div>
+          <p class="feature-desc">Gestionează toți clienții cu datele de contact complete. Accesează rapid istoricul ofertelor pentru fiecare client.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <div class="feature-title">Catalog produse & servicii</div>
+          <p class="feature-desc">Construiești catalogul o singură dată cu prețurile tale. La fiecare ofertă nouă adaugi produse direct din catalog — rapid și fără greșeli.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Rapoarte & statistici</div>
+          <p class="feature-desc">Vizualizează evoluția ofertelor, valoarea totală, rata de acceptare și comparații lunare — direct în aplicație.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <div class="feature-title">Notificări & calendar</div>
+          <p class="feature-desc">Primești notificări locale pentru lucrările planificate. Calendarul integrat îți arată toate termenele dintr-o privire.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="padding-top: 0;" id="cum-functioneaza">
+    <div class="wrapper">
+      <div class="section-label">Cum funcționează</div>
+      <h2 class="section-title">De la instalare la<br /><span>prima ofertă în 5 minute</span></h2>
+      <p class="section-sub">Fără configurări complicate. Pornești imediat.</p>
+
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-title">Creezi contul</div>
+          <p class="step-desc">Înregistrare cu email sau cont Google. Introduci datele companiei o singură dată.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-title">Adaugi produsele</div>
+          <p class="step-desc">Construiești catalogul cu produsele și serviciile tale, cu prețuri și unități de măsură.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-title">Creezi oferta</div>
+          <p class="step-desc">Selectezi clientul, adaugi produsele din catalog și oferta e gata în câteva minute.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-title">Trimiți & urmărești</div>
+          <p class="step-desc">Trimiți PDF-ul prin WhatsApp sau email. Urmărești statusul și lucrările aferente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="section" style="padding-top: 0;">
+    <div class="wrapper">
+      <div class="section-label">Pentru cine</div>
+      <h2 class="section-title">Construit pentru <span>meseriașii români</span></h2>
+      <p class="section-sub">Oricine lucrează cu oferte de preț și vrea să arate mai profesional.</p>
+
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-icon">🏗️</div>
+          <div class="who-title">Constructori & renovări</div>
+          <p class="who-desc">Oferte complexe cu zeci de materiale și manoperă. Organizat și profesional.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">⚡</div>
+          <div class="who-title">Instalatori & electricieni</div>
+          <p class="who-desc">Catalog de materiale propriu, oferte rapide direct de pe șantier.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🪟</div>
+          <div class="who-title">Tâmplari & montatori</div>
+          <p class="who-desc">Gestionare comenzi, urmărire lucrări și facturare simplificată.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🌿</div>
+          <div class="who-title">Amenajări & peisagistică</div>
+          <p class="who-desc">Oferte vizuale cu semnătură digitală — impresionezi clientul la prima întâlnire.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🔩</div>
+          <div class="who-title">Service & reparații</div>
+          <p class="who-desc">Devize rapide, urmărire reparații și istoric complet per client.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">📐</div>
+          <div class="who-title">Orice firmă mică</div>
+          <p class="who-desc">Dacă lucrezi cu oferte de preț, BANSIRIX îți simplifică activitatea zilnică.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" style="padding-top: 0;" id="preturi">
+    <div class="wrapper">
+      <div class="section-label">Prețuri</div>
+      <h2 class="section-title">Simplu și <span>transparent</span></h2>
+      <p class="section-sub">Pornești gratuit. Treci la premium când ești gata să crești.</p>
+
+      <div class="pricing-grid">
+
+        <div class="plan-card">
+          <div class="plan-name">Gratuit</div>
+          <div class="plan-price">0 <span>RON</span></div>
+          <div class="plan-price-sub">pentru totdeauna</div>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span> Oferte de preț</li>
+            <li><span class="plan-check">✓</span> Bază de clienți</li>
+            <li><span class="plan-check">✓</span> Catalog produse</li>
+            <li><span class="plan-check">✓</span> Generare PDF</li>
+            <li><span class="plan-x">—</span> Scanare AI documente</li>
+            <li><span class="plan-x">—</span> Facturi proforme</li>
+            <li><span class="plan-x">—</span> Rapoarte avansate</li>
+          </ul>
+          <a href="#download" class="plan-btn plan-btn-free">Descarcă gratuit</a>
+        </div>
+
+        <div class="plan-card premium">
+          <div class="plan-badge">POPULAR</div>
+          <div class="plan-name">Premium</div>
+          <div class="plan-price">€4<span>,99/lună</span></div>
+          <div class="plan-price-sub">anulare oricând</div>
+          <ul class="plan-features">
+            <li><span class="plan-check">✓</span> Tot ce include Gratuit</li>
+            <li><span class="plan-check">✓</span> Scanare AI documente</li>
+            <li><span class="plan-check">✓</span> Facturi proforme</li>
+            <li><span class="plan-check">✓</span> Rapoarte & statistici</li>
+            <li><span class="plan-check">✓</span> Semnătură digitală</li>
+            <li><span class="plan-check">✓</span> Gestionare lucrări</li>
+            <li><span class="plan-check">✓</span> Notificări avansate</li>
+          </ul>
+          <a href="#download" class="plan-btn plan-btn-premium">Încearcă gratuit</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="wrapper">
+      <div class="cta-card">
+        <h2>Gata să arăți mai profesional?</h2>
+        <p>Descarcă BANSIRIX gratuit și trimite prima ta ofertă digitală astăzi.</p>
+        <div class="cta-actions">
+          <a href="#" class="store-badge">
+            <span class="store-badge-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3DDC84" xmlns="http://www.w3.org/2000/svg"><path d="M17.523 15.3414c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m-11.046 0c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg></span>
+            <div class="store-badge-text">
+              <span class="store-badge-sub">Descarcă pe</span>
+              <span class="store-badge-name">Google Play</span>
+            </div>
+          </a>
+          <a href="#" class="store-badge" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
+            <span class="store-badge-icon" style="font-size:22px;"></span>
+            <div class="store-badge-text">
+              <span class="store-badge-sub">În curând pe</span>
+              <span class="store-badge-name">App Store</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrapper">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">BANSIRIX</div>
+          <div class="footer-sub">© 2025 — Gestionare Oferte, Facturi & Lucrări</div>
+        </div>
+        <div class="footer-links">
+          <a href="/privacy">Confidențialitate</a>
+          <a href="/terms">Termeni</a>
+          <a href="/cdn-cgi/l/email-protection#3e5d51504a5f5d4a7e5c5f504d574c5746105d5153">Contact</a>
+        </div>
+      </di

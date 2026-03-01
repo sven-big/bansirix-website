@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termeni și Condiții / Terms of Use — BANSIRIX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080B0F;
+      --surface: #0F1318;
+      --surface2: #161B22;
+      --border: rgba(255,255,255,0.06);
+      --accent: #2BC0AE;
+      --accent2: #1A9E8F;
+      --text: #E8EDF2;
+      --text-muted: #6B7685;
+      --text-dim: #9AA5B4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(43,192,174,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 100%, rgba(43,192,174,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      padding: 48px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #000;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .page-title span { color: var(--accent); }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+
+    .content { padding-bottom: 80px; }
+
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    .section { margin-bottom: 40px; }
+
+    .section-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      color: var(--text-dim);
+      padding: 5px 0 5px 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .highlight-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent2);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .highlight-box p { margin: 0; font-size: 14px; }
+
+    .warning-box {
+      background: rgba(255, 180, 0, 0.05);
+      border: 1px solid rgba(255, 180, 0, 0.15);
+      border-left: 3px solid #FFB400;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .warning-box p { margin: 0; font-size: 14px; color: var(--text-dim); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .feature-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feature-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(43,192,174,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    .contact-email {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-email:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .contact-box { flex-direction: column; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <a href="https://bansirix.com" class="logo">
+      <div class="logo-mark">BX</div>
+      <span class="logo-text">BANSIRIX</span>
+    </a>
+
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ro')">Română</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
+
+    <div class="page-title" id="title-ro">Termeni și <span>Condiții</span></div>
+    <div class="page-title" id="title-en" style="display:none">Terms of <span>Use</span></div>
+
+    <div class="meta">
+      <span id="meta-updated-ro">Ultima actualizare: 1 martie 2026</span>
+      <span id="meta-updated-en" style="display:none">Last updated: March 1, 2026</span>
+      <div class="meta-dot"></div>
+      <span>BANSIRIX</span>
+      <div class="meta-dot"></div>
+      <span>Legea României / Romanian Law</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ROMÂNĂ -->
+    <div class="lang-section active" id="lang-ro">
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Acceptarea termenilor</h2>
+        <p>Prin descărcarea, instalarea sau utilizarea aplicației BANSIRIX ("Aplicația"), acceptați să fiți obligat de acești Termeni și Condiții de Utilizare ("Termeni"). Dacă nu sunteți de acord cu acești Termeni, vă rugăm să nu utilizați Aplicația.</p>
+        <p>Acești Termeni constituie un acord juridic obligatoriu între dumneavoastră și BANSIRIX, guvernat de legile României și de dreptul european aplicabil.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Descrierea serviciului</h2>
+        <p>BANSIRIX este o aplicație de gestionare a activității comerciale pentru firme mici din România, oferind:</p>
+        <div class="features-grid">
+          <div class="feature-item"><div class="feature-dot"></div>Oferte de preț</div>
+          <div class="feature-item"><div class="feature-dot"></div>Facturi proforme</div>
+          <div class="feature-item"><div class="feature-dot"></div>Gestionare lucrări</div>
+          <div class="feature-item"><div class="feature-dot"></div>Catalog produse</div>
+          <div class="feature-item"><div class="feature-dot"></div>Bază de clienți</div>
+          <div class="feature-item"><div class="feature-dot"></div>Semnătură digitală</div>
+          <div class="feature-item"><div class="feature-dot"></div>Scanare AI documente</div>
+          <div class="feature-item"><div class="feature-dot"></div>Rapoarte & statistici</div>
+          <div class="feature-item"><div class="feature-dot"></div>Notițe audio (opțional)</div>
+          <div class="feature-item"><div class="feature-dot"></div>Notificări locale</div>
+        </div>
+        <p>Aplicația este disponibilă în versiune gratuită (cu limitări) și în versiune premium prin subscripție lunară.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Înregistrarea și contul</h2>
+        <ul>
+          <li>Trebuie să furnizați informații corecte și complete la înregistrare</li>
+          <li>Sunteți responsabil pentru securitatea contului și a parolei dumneavoastră</li>
+          <li>Trebuie să aveți <strong>minimum 18 ani</strong> pentru a utiliza Aplicația</li>
+          <li>Un cont este destinat utilizării de către o singură companie sau persoană autorizată</li>
+          <li>Ne rezervăm dreptul de a suspenda sau șterge conturile care încalcă acești Termeni</li>
+          <li>Sunteți responsabil pentru toate activitățile desfășurate din contul dumneavoastră</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>Utilizarea permisă</h2>
+        <p>Vă angajați să utilizați Aplicația exclusiv în conformitate cu acești Termeni și cu legislația aplicabilă. Este interzis să:</p>
+        <ul>
+          <li>Utilizați Aplicația pentru activități ilegale, frauduloase sau în scopuri necomerciale</li>
+          <li>Accesați neautorizat sistemele, datele altor utilizatori sau infrastructura Aplicației</li>
+          <li>Dezasamblați, decompilați sau efectuați inginerie inversă asupra Aplicației</li>
+          <li>Distribuiți, vindeți sau sublicențiați Aplicația fără acordul nostru scris</li>
+          <li>Încărcați conținut malițios, viruși sau orice cod dăunător</li>
+          <li>Utilizați Aplicația pentru a trimite comunicări nesolicitate (spam)</li>
+          <li>Introduceți date false, înșelătoare sau care încalcă drepturile terților</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>Datele și conținutul utilizatorului</h2>
+        <ul>
+          <li>Rămâneți proprietarul tuturor datelor pe care le introduceți în Aplicație</li>
+          <li>Sunteți responsabil pentru acuratețea, legalitatea și conformitatea fiscală a datelor introduse</li>
+          <li>Ne acordați o licență limitată, neexclusivă, de a stoca și procesa datele exclusiv pentru furnizarea serviciului</li>
+          <li>Documentele generate (oferte, facturi) sunt responsabilitatea dumneavoastră juridică și fiscală</li>
+          <li>Vă recomandăm să păstrați copii de siguranță ale datelor importante</li>
+        </ul>
+        <div class="warning-box">
+          <p>⚠️ BANSIRIX este un instrument de asistență. Verificați întotdeauna documentele generate înainte de a le utiliza în tranzacții comerciale sau fiscale.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>Funcția de scanare AI</h2>
+        <ul>
+          <li>Funcția de scanare AI este un instrument de asistență și <strong>nu garantează acuratețea 100%</strong> a extragerii datelor</li>
+          <li>Este responsabilitatea dumneavoastră să verificați și să corectați datele extrase automat</li>
+          <li>Imaginile scanate sunt transmise securizat către un serviciu extern de inteligență artificială pentru procesare</li>
+          <li>Nu ne asumăm răspunderea pentru erori în extragerea automată a datelor sau pentru decizii luate pe baza lor</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Permisiuni dispozitiv</h2>
+        <ul>
+          <li><strong>Cameră:</strong> necesară pentru scanarea documentelor cu AI</li>
+          <li><strong>Galerie/Fișiere:</strong> necesară pentru încărcarea și salvarea documentelor</li>
+          <li><strong>Microfon:</strong> necesară opțional pentru funcția de notițe audio</li>
+          <li><strong>Notificări:</strong> necesară pentru notificări privind lucrările planificate</li>
+        </ul>
+        <p>Puteți gestiona sau revoca aceste permisiuni din setările dispozitivului. Dezactivarea unor permisiuni poate limita funcționalitatea Aplicației.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>Subscripții și plăți</h2>
+        <ul>
+          <li>Aplicația oferă un plan gratuit cu funcționalități limitate și un plan premium prin subscripție lunară</li>
+          <li>Prețul curent al subscripției premium este de <strong>€4,99/lună</strong> (poate fi modificat cu notificare prealabilă)</li>
+          <li>Plățile sunt procesate exclusiv prin Google Play Store sau Apple App Store</li>
+          <li>Gestionarea subscripțiilor se realizează prin platforma RevenueCat</li>
+          <li>Condițiile de anulare și rambursare sunt cele ale magazinului de aplicații utilizat</li>
+          <li>Subscripția se reînnoiește automat dacă nu este anulată înainte de data de reînnoire</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">09</div>
+        <h2>Proprietatea intelectuală</h2>
+        <ul>
+          <li>Aplicația BANSIRIX, inclusiv designul, codul sursă, logo-ul și marca, sunt proprietatea exclusivă a BANSIRIX</li>
+          <li>Vi se acordă o licență limitată, neexclusivă, nesublicentabilă, de utilizare personală/comercială a Aplicației</li>
+          <li>Marca "BANSIRIX" nu poate fi utilizată fără acordul nostru scris prealabil</li>
+          <li>Conținutul generat (oferte, documente) rămâne proprietatea dumneavoastră</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">10</div>
+        <h2>Limitarea răspunderii</h2>
+        <ul>
+          <li>Aplicația este furnizată "ca atare" (<em>as is</em>), fără garanții exprese sau implicite</li>
+          <li>Nu garantăm disponibilitatea neîntreruptă sau fără erori a serviciului</li>
+          <li>Nu ne asumăm răspunderea pentru pierderi financiare sau de date rezultate din utilizarea Aplicației</li>
+          <li>Nu ne asumăm răspunderea pentru decizii comerciale sau fiscale luate pe baza datelor din Aplicație</li>
+          <li>Răspunderea noastră maximă agregată este limitată la suma plătită de dumneavoastră în ultimele <strong>12 luni</strong></li>
+        </ul>
+        <div class="highlight-box">
+          <p>Aceste limitări se aplică în măsura permisă de legislația aplicabilă în România. Drepturile dumneavoastră legale ca consumator nu sunt afectate.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">11</div>
+        <h2>Modificarea și încetarea serviciului</h2>
+        <ul>
+          <li>Ne rezervăm dreptul de a modifica acești Termeni cu notificare de minimum <strong>14 zile</strong> prin Aplicație sau email</li>
+          <li>Continuarea utilizării după modificare constituie acceptarea noilor Termeni</li>
+          <li>Puteți înceta utilizarea și șterge contul în orice moment din setările Aplicației</li>
+          <li>Ne rezervăm dreptul de a suspenda sau înceta serviciul cu notificare rezonabilă prealabilă</li>
+          <li>La încetarea serviciului, veți fi notificat cu <strong>30 de zile</strong> înainte și veți putea exporta datele</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">12</div>
+        <h2>Legea aplicabilă și jurisdicția</h2>
+        <p>Acești Termeni sunt guvernați de <strong>legile României</strong> și de dreptul european aplicabil. Orice dispută care nu poate fi soluționată amiabil va fi supusă jurisdicției exclusive a instanțelor competente din România.</p>
+        <p>Dacă sunteți consumator în UE, beneficiați de protecțiile legale obligatorii prevăzute de legislația națională și europeană privind protecția consumatorilor, indiferent de prezentele Termeni.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">13</div>
+        <h2>Dispoziții finale</h2>
+        <ul>
+          <li>Dacă orice prevedere este considerată invalidă sau inaplicabilă, celelalte prevederi rămân în vigoare</li>
+          <li>Neexercitarea unui drept nu constituie renunțarea la acel drept</li>
+          <li>Acești Termeni constituie întregul acord dintre dumneavoastră și BANSIRIX privind utilizarea Aplicației</li>
+          <li>Versiunea în limba română are prioritate în caz de conflict cu traducerile</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">14</div>
+        <h2>Contact</h2>
+        <div class="contact-box">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <p style="color:var(--text); font-weight:500; margin-bottom:8px;">BANSIRIX — Suport & Legal</p>
+            <p>Email: <a href="mailto:contact@bansirix.com" class="contact-email">contact@bansirix.com</a></p>
+            <p>Aplicație: BANSIRIX — Gestionare Oferte, Facturi & Lucrări</p>
+            <p>Website: <a href="https://bansirix.com" style="color:var(--accent)">bansirix.com</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lang-ro -->
+
+    <!-- ENGLISH -->
+    <div class="lang-section" id="lang-en">
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Acceptance of Terms</h2>
+        <p>By downloading, installing or using the BANSIRIX application ("App"), you agree to be bound by these Terms of Use ("Terms"). If you do not agree to these Terms, please do not use the App.</p>
+        <p>These Terms constitute a legally binding agreement between you and BANSIRIX, governed by the laws of Romania and applicable European law.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Service Description</h2>
+        <p>BANSIRIX is a commercial activity management application for small businesses in Romania, offering:</p>
+        <div class="features-grid">
+          <div class="feature-item"><div class="feature-dot"></div>Price Offers</div>
+          <div class="feature-item"><div class="feature-dot"></div>Proforma Invoices</div>
+          <div class="feature-item"><div class="feature-dot"></div>Work Order Management</div>
+          <div class="feature-item"><div class="feature-dot"></div>Product Catalog</div>
+          <div class="feature-item"><div class="feature-dot"></div>Client Database</div>
+          <div class="feature-item"><div class="feature-dot"></div>Digital Signature</div>
+          <div class="feature-item"><div class="feature-dot"></div>AI Document Scanning</div>
+          <div class="feature-item"><div class="feature-dot"></div>Reports & Statistics</div>
+          <div class="feature-item"><div class="feature-dot"></div>Audio Notes (optional)</div>
+          <div class="feature-item"><div class="feature-dot"></div>Local Notifications</div>
+        </div>
+        <p>The App is available in a free version (with limitations) and a premium version via monthly subscription.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Registration and Account</h2>
+        <ul>
+          <li>You must provide accurate and complete information at registration</li>
+          <li>You are responsible for the security of your account and password</li>
+          <li>You must be at least <strong>18 years old</strong> to use the App</li>
+          <li>An account is intended for use by a single company or authorized person</li>
+          <li>We reserve the right to suspend or delete accounts that violate these Terms</li>
+          <li>You are responsible for all activities conducted from your account</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>Permitted Use</h2>
+        <p>You agree to use the App exclusively in accordance with these Terms and applicable law. You must not:</p>
+        <ul>
+          <li>Use the App for illegal, fraudulent or non-commercial activities</li>
+          <li>Gain unauthorized access to systems, other users' data or App infrastructure</li>
+          <li>Disassemble, decompile or reverse engineer the App</li>
+          <li>Distribute, sell or sublicense the App without our written consent</li>
+          <li>Upload malicious content, viruses or any harmful code</li>
+          <li>Use the App to send unsolicited communications (spam)</li>
+          <li>Enter false, misleading or third-party rights-infringing data</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>User Data and Content</h2>
+        <ul>
+          <li>You retain ownership of all data you enter into the App</li>
+          <li>You are responsible for the accuracy, legality and tax compliance of entered data</li>
+          <li>You grant us a limited, non-exclusive license to store and process data solely to provide the service</li>
+          <li>Generated documents (offers, invoices) are your legal and fiscal responsibility</li>
+          <li>We recommend keeping backups of important data</li>
+        </ul>
+        <div class="warning-box">
+          <p>⚠️ BANSIRIX is an assistance tool. Always verify generated documents before using them in commercial or fiscal transactions.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>AI Scanning Feature</h2>
+        <ul>
+          <li>The AI scanning feature is an assistance tool and <strong>does not guarantee 100% accuracy</strong> in data extraction</li>
+          <li>You are responsible for verifying and correcting automatically extracted data</li>
+          <li>Scanned images are securely transmitted to an external AI service for processing</li>
+          <li>We assume no liability for errors in automatic data extraction or decisions based thereon</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Device Permissions</h2>
+        <ul>
+          <li><strong>Camera:</strong> required for AI document scanning</li>
+          <li><strong>Gallery/Files:</strong> required for uploading and saving documents</li>
+          <li><strong>Microphone:</strong> optionally required for audio notes feature</li>
+          <li><strong>Notifications:</strong> required for notifications about scheduled work orders</li>
+        </ul>
+        <p>You can manage or revoke these permissions from device settings. Disabling certain permissions may limit App functionality.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>Subscriptions and Payments</h2>
+        <ul>
+          <li>The App offers a free plan with limited features and a premium plan via monthly subscription</li>
+          <li>Current premium subscription price: <strong>€4.99/month</strong> (may be changed with prior notice)</li>
+          <li>Payments are processed exclusively through Google Play Store or Apple App Store</li>
+          <li>Subscription management is handled through the RevenueCat platform</li>
+          <li>Cancellation and refund terms are those of the app store used</li>
+          <li>Subscription auto-renews unless cancelled before the renewal date</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">09</div>
+        <h2>Intellectual Property</h2>
+        <ul>
+          <li>The BANSIRIX app, including its design, source code, logo and trademark, are the exclusive property of BANSIRIX</li>
+          <li>You are granted a limited, non-exclusive, non-sublicensable license for personal/commercial use of the App</li>
+          <li>The "BANSIRIX" trademark may not be used without our prior written consent</li>
+          <li>Generated content (offers, documents) remains your property</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">10</div>
+        <h2>Limitation of Liability</h2>
+        <ul>
+          <li>The App is provided "as is", without express or implied warranties</li>
+          <li>We do not guarantee uninterrupted or error-free availability of the service</li>
+          <li>We assume no liability for financial or data losses resulting from use of the App</li>
+          <li>We assume no liability for commercial or fiscal decisions made based on App data</li>
+          <li>Our maximum aggregate liability is limited to the amount paid by you in the last <strong>12 months</strong></li>
+        </ul>
+        <div class="highlight-box">
+          <p>These limitations apply to the extent permitted by applicable law in Romania. Your statutory rights as a consumer are not affected.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">11</div>
+        <h2>Modification and Termination</h2>
+        <ul>
+          <li>We reserve the right to modify these Terms with at least <strong>14 days'</strong> notice via App or email</li>
+          <li>Continued use after modification constitutes acceptance of the new Terms</li>
+          <li>You may stop using and delete your account at any time from App settings</li>
+          <li>We reserve the right to suspend or terminate the service with reasonable prior notice</li>
+          <li>Upon service termination, you will be notified <strong>30 days</strong> in advance and will be able to export your data</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">12</div>
+        <h2>Governing Law and Jurisdiction</h2>
+        <p>These Terms are governed by the <strong>laws of Romania</strong> and applicable European law. Any dispute that cannot be resolved amicably shall be subject to the exclusive jurisdiction of the competent courts in Romania.</p>
+        <p>If you are a consumer in the EU, you benefit from the mandatory legal protections provided by national and European consumer protection legislation, regardless of these Terms.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">13</div>
+        <h2>Miscellaneous</h2>
+        <ul>
+          <li>If any provision is found invalid or unenforceable, the remaining provisions remain in effect</li>
+          <li>Failure to exercise a right does not constitute waiver of that right</li>
+          <li>These Terms constitute the entire agreement between you and BANSIRIX regarding use of the App</li>
+          <li>The Romanian language version takes precedence in case of conflict with translations</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">14</div>
+        <h2>Contact</h2>
+        <div class="contact-box">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <p style="color:var(--text); font-weight:500; margin-bottom:8px;">BANSIRIX — Support & Legal</p>
+            <p>Email: <a href="mailto:contact@bansirix.com" class="contact-email">contact@bansirix.com</a></p>
+            <p>App: BANSIRIX — Offer, Invoice & Work Order Management</p>
+            <p>Website: <a href="https://bansirix.com" style="color:var(--accent)">bansirix.com</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lang-en -->
+
+  </div><!-- /content -->
+
+  <footer>
+    <div class="footer-brand">BANSIRIX</div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="mailto:contact@bansirix.com">Contact</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    document.querySelector(`[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.getElementById('title-ro').style.display = lang === 'ro' ? '' : 'none';
+    document.getElementById('title-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('meta-updated-ro').style.display = lang === 'ro' ? '' : 'none';
+    document.getElementById('meta-updated-en').style.display = lang === 'en' ? '' : 'none';
+  }
+</script>
+</body>
+</html>

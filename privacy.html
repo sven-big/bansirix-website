@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Politica de Confidențialitate / Privacy Policy — BANSIRIX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080B0F;
+      --surface: #0F1318;
+      --surface2: #161B22;
+      --border: rgba(255,255,255,0.06);
+      --accent: #2BC0AE;
+      --accent2: #1A9E8F;
+      --text: #E8EDF2;
+      --text-muted: #6B7685;
+      --text-dim: #9AA5B4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Background texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(43,192,174,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 100%, rgba(43,192,174,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 48px 0 40px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 56px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 32px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: #000;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text);
+      letter-spacing: 1px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .lang-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .page-title span {
+      color: var(--accent);
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+
+    /* Content */
+    .content {
+      padding-bottom: 80px;
+    }
+
+    /* Language sections */
+    .lang-section { display: none; }
+    .lang-section.active { display: block; }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section-number {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--text-dim);
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 14px;
+    }
+
+    ul li {
+      color: var(--text-dim);
+      padding: 5px 0 5px 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* Highlight box */
+    .highlight-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* Rights grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .right-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .right-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .right-card p {
+      font-size: 13px;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Contact box */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(43,192,174,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    .contact-email {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-email:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 16px;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .rights-grid { grid-template-columns: 1fr; }
+      .contact-box { flex-direction: column; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <a href="https://bansirix.com" class="logo">
+      <div class="logo-mark">BX</div>
+      <span class="logo-text">BANSIRIX</span>
+    </a>
+
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ro')">Română</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
+
+    <div class="page-title" id="title-ro">Politica de <span>Confidențialitate</span></div>
+    <div class="page-title" id="title-en" style="display:none">Privacy <span>Policy</span></div>
+
+    <div class="meta">
+      <span id="meta-updated-ro">Ultima actualizare: 1 martie 2026</span>
+      <span id="meta-updated-en" style="display:none">Last updated: March 1, 2026</span>
+      <div class="meta-dot"></div>
+      <span>BANSIRIX</span>
+      <div class="meta-dot"></div>
+      <span>GDPR Compliant</span>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ROMÂNĂ -->
+    <div class="lang-section active" id="lang-ro">
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Introducere</h2>
+        <p>Bine ați venit în aplicația BANSIRIX ("Aplicația"), operată de BANSIRIX ("noi", "al nostru"). Această Politică de Confidențialitate explică modul în care colectăm, utilizăm, stocăm și protejăm datele dumneavoastră personale atunci când utilizați Aplicația noastră de gestionare oferte, facturi și lucrări.</p>
+        <p>Prelucrăm datele dumneavoastră în conformitate cu <strong>Regulamentul (UE) 2016/679 (GDPR)</strong> și legislația națională aplicabilă în România. Prin utilizarea Aplicației, confirmați că ați citit și înțeles această politică.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Datele pe care le colectăm</h2>
+
+        <h3>2.1 Date furnizate direct de dumneavoastră</h3>
+        <ul>
+          <li><strong>Date de cont:</strong> adresă de email, parolă criptată (sau autentificare prin Google OAuth)</li>
+          <li><strong>Date companie:</strong> denumire firmă, CUI, nr. registrul comerțului, adresă, telefon, email, IBAN, bancă, reprezentant legal, monedă implicită</li>
+          <li><strong>Date clienți:</strong> nume, date de contact (telefon, email), adresă</li>
+          <li><strong>Catalog produse/servicii:</strong> denumire, descriere, prețuri, unitate de măsură</li>
+          <li><strong>Documente comerciale:</strong> oferte, proforme, facturi, lucrări, semnături digitale, documente atașate</li>
+        </ul>
+
+        <h3>2.2 Date colectate automat</h3>
+        <ul>
+          <li><strong>Date de utilizare:</strong> statistici agregate privind documentele create (pentru funcția de rapoarte)</li>
+          <li><strong>Date tehnice:</strong> tip dispozitiv, sistem de operare — pentru compatibilitate și securitate</li>
+        </ul>
+
+        <h3>2.3 Date colectate prin permisiuni</h3>
+        <ul>
+          <li><strong>Cameră:</strong> pentru scanarea documentelor cu funcția AI de extragere produse</li>
+          <li><strong>Galerie/Fișiere:</strong> pentru încărcarea și salvarea documentelor</li>
+          <li><strong>Microfon:</strong> pentru funcția opțională de notițe audio (cu transcriere automată)</li>
+          <li><strong>Notificări:</strong> pentru notificări locale privind lucrările planificate</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Scopul și baza legală a prelucrării</h2>
+        <p>Prelucrăm datele dumneavoastră pe baza următoarelor temeiuri legale conform GDPR:</p>
+        <ul>
+          <li><strong>Executarea contractului (Art. 6(1)(b)):</strong> gestionarea contului, generarea documentelor, procesarea subscripțiilor</li>
+          <li><strong>Interese legitime (Art. 6(1)(f)):</strong> îmbunătățirea aplicației, securitate, prevenirea fraudelor</li>
+          <li><strong>Consimțământ (Art. 6(1)(a)):</strong> notificări push, funcții opționale (microfon, audio)</li>
+          <li><strong>Obligație legală (Art. 6(1)(c)):</strong> păstrarea datelor conform cerințelor fiscale și contabile aplicabile</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>Servicii terțe (procesatori de date)</h2>
+        <ul>
+          <li><strong>Supabase (Supabase Inc.):</strong> autentificare și stocare securizată a datelor în cloud. Date stocate pe servere UE/SUA cu garanții adecvate (SCCs). <a href="https://supabase.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Politica Supabase →</a></li>
+          <li><strong>Serviciu extern de inteligență artificială:</strong> procesarea imaginilor pentru extragerea automată a produselor din documente scanate. Imaginile sunt transmise securizat și nu sunt stocate permanent de serviciul terț.</li>
+          <li><strong>RevenueCat:</strong> gestionarea subscripțiilor și plăților in-app. RevenueCat procesează datele de tranzacție conform propriei politici. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Politica RevenueCat →</a></li>
+          <li><strong>Autentificare OAuth:</strong> opțional, pentru autentificare prin cont Google.</li>
+          <li><strong>Serviciu extern de transcriere audio:</strong> transcriere opțională a notițelor vocale (dacă funcția e activată).</li>
+        </ul>
+        <div class="highlight-box">
+          <p>Nu vindem, nu închiriem și nu partajăm datele dumneavoastră personale cu terți în scopuri de marketing sau publicitate.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>Stocarea și securitatea datelor</h2>
+        <ul>
+          <li>Datele sunt stocate securizat în baza de date Supabase, cu criptare în repaus și în tranzit (TLS/HTTPS)</li>
+          <li>Parolele sunt stocate exclusiv în formă criptată (hash bcrypt) — nu le cunoaștem niciodată în text clar</li>
+          <li>Accesul la date este restricționat strict la contul dumneavoastră autentificat prin Row Level Security (RLS)</li>
+          <li>Efectuăm audituri de securitate periodice și monitorizăm accesul neautorizat</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>Drepturile dumneavoastră (GDPR)</h2>
+        <p>În conformitate cu GDPR, aveți următoarele drepturi pe care le puteți exercita oricând contactând <a href="mailto:contact@bansirix.com" class="contact-email">contact@bansirix.com</a>:</p>
+
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-title">Dreptul de acces</div>
+            <p>Puteți solicita o copie a datelor personale pe care le deținem despre dumneavoastră.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Dreptul la rectificare</div>
+            <p>Puteți corecta datele inexacte direct din Aplicație sau prin solicitare.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Dreptul la ștergere</div>
+            <p>Puteți solicita ștergerea contului și a tuturor datelor asociate ("dreptul de a fi uitat").</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Dreptul la portabilitate</div>
+            <p>Puteți solicita exportul datelor dumneavoastră într-un format structurat.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Dreptul la restricționare</div>
+            <p>Puteți solicita limitarea prelucrării datelor în anumite circumstanțe.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Dreptul de opoziție</div>
+            <p>Vă puteți opune prelucrării bazate pe interese legitime.</p>
+          </div>
+        </div>
+
+        <p>Aveți de asemenea dreptul de a depune o plângere la <strong>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal (ANSPDCP)</strong> — <a href="https://www.dataprotection.ro" target="_blank" rel="noopener" style="color:var(--accent)">www.dataprotection.ro</a>.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Retenția datelor</h2>
+        <p>Păstrăm datele dumneavoastră pe durata activității contului. La ștergerea contului:</p>
+        <ul>
+          <li>Toate datele personale identificabile sunt șterse definitiv în termen de <strong>30 de zile</strong></li>
+          <li>Datele anonimizate pentru statistici agregate pot fi păstrate și ulterior</li>
+          <li>Anumite date pot fi reținute pentru perioade mai lungi dacă legislația fiscală sau contabilă o impune</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>Transferuri internaționale de date</h2>
+        <p>Unii procesatori (Supabase, Anthropic, RevenueCat) pot stoca sau prelucra date pe servere situate în afara Spațiului Economic European. Ne asigurăm că transferurile se realizează cu garanții adecvate, inclusiv prin <strong>Clauze Contractuale Standard (SCCs)</strong> aprobate de Comisia Europeană.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">09</div>
+        <h2>Restricții de vârstă</h2>
+        <p>BANSIRIX este destinat exclusiv utilizării profesionale și comerciale de către persoane cu vârsta de <strong>minimum 18 ani</strong> și/sau entități juridice autorizate. Nu colectăm cu bună știință date ale persoanelor sub 18 ani. Dacă aveți motive să credeți că un minor a utilizat Aplicația, contactați-ne imediat.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">10</div>
+        <h2>Modificări ale politicii</h2>
+        <p>Ne rezervăm dreptul de a actualiza această politică. Vă vom notifica despre modificările semnificative prin email sau prin notificare în Aplicație cu cel puțin <strong>14 zile</strong> înainte de intrarea în vigoare. Continuarea utilizării Aplicației după data intrării în vigoare constituie acceptarea modificărilor.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">11</div>
+        <h2>Contact</h2>
+        <div class="contact-box">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <p style="color:var(--text); font-weight:500; margin-bottom:8px;">Responsabil cu protecția datelor (DPO)</p>
+            <p>Email: <a href="mailto:contact@bansirix.com" class="contact-email">contact@bansirix.com</a></p>
+            <p>Aplicație: BANSIRIX — Gestionare Oferte, Facturi & Lucrări</p>
+            <p>Website: <a href="https://bansirix.com" style="color:var(--accent)">bansirix.com</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lang-ro -->
+
+    <!-- ENGLISH -->
+    <div class="lang-section" id="lang-en">
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Introduction</h2>
+        <p>Welcome to the BANSIRIX application ("App"), operated by BANSIRIX ("we", "our", "us"). This Privacy Policy explains how we collect, use, store, and protect your personal data when you use our offer, invoice and work order management App.</p>
+        <p>We process your data in accordance with <strong>Regulation (EU) 2016/679 (GDPR)</strong> and applicable national legislation in Romania. By using the App, you confirm that you have read and understood this policy.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Data We Collect</h2>
+
+        <h3>2.1 Data you provide directly</h3>
+        <ul>
+          <li><strong>Account data:</strong> email address, encrypted password (or Google OAuth authentication)</li>
+          <li><strong>Company data:</strong> company name, VAT number, trade registry number, address, phone, email, IBAN, bank, legal representative, default currency</li>
+          <li><strong>Client data:</strong> name, contact details (phone, email), address</li>
+          <li><strong>Product/service catalog:</strong> name, description, prices, unit of measure</li>
+          <li><strong>Commercial documents:</strong> offers, proformas, invoices, work orders, digital signatures, attached documents</li>
+        </ul>
+
+        <h3>2.2 Automatically collected data</h3>
+        <ul>
+          <li><strong>Usage data:</strong> aggregated statistics on documents created (for reporting feature)</li>
+          <li><strong>Technical data:</strong> device type, operating system — for compatibility and security</li>
+        </ul>
+
+        <h3>2.3 Data collected through permissions</h3>
+        <ul>
+          <li><strong>Camera:</strong> for document scanning with AI product extraction feature</li>
+          <li><strong>Gallery/Files:</strong> for uploading and saving documents</li>
+          <li><strong>Microphone:</strong> for optional audio notes feature (with automatic transcription)</li>
+          <li><strong>Notifications:</strong> for local notifications about scheduled work orders</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Purpose and Legal Basis for Processing</h2>
+        <p>We process your data based on the following legal grounds under GDPR:</p>
+        <ul>
+          <li><strong>Contract performance (Art. 6(1)(b)):</strong> account management, document generation, subscription processing</li>
+          <li><strong>Legitimate interests (Art. 6(1)(f)):</strong> app improvement, security, fraud prevention</li>
+          <li><strong>Consent (Art. 6(1)(a)):</strong> push notifications, optional features (microphone, audio)</li>
+          <li><strong>Legal obligation (Art. 6(1)(c)):</strong> data retention per applicable fiscal and accounting requirements</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>Third-Party Services (Data Processors)</h2>
+        <ul>
+          <li><strong>Supabase (Supabase Inc.):</strong> authentication and secure cloud data storage. Data stored on EU/US servers with adequate safeguards (SCCs). <a href="https://supabase.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Supabase Privacy →</a></li>
+          <li><strong>External AI service:</strong> image processing for automatic product extraction from scanned documents. Images are transmitted securely and not permanently stored by the third-party service.</li>
+          <li><strong>RevenueCat:</strong> in-app subscription and payment management. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">RevenueCat Privacy →</a></li>
+          <li><strong>OAuth authentication:</strong> optional, for authentication via Google account.</li>
+          <li><strong>External audio transcription service:</strong> optional transcription of voice notes (if feature is enabled).</li>
+        </ul>
+        <div class="highlight-box">
+          <p>We do not sell, rent or share your personal data with third parties for marketing or advertising purposes.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>Data Storage and Security</h2>
+        <ul>
+          <li>Data is securely stored in Supabase database, with encryption at rest and in transit (TLS/HTTPS)</li>
+          <li>Passwords are stored exclusively in encrypted form (bcrypt hash) — we never know them in plain text</li>
+          <li>Data access is strictly restricted to your authenticated account via Row Level Security (RLS)</li>
+          <li>We conduct regular security audits and monitor for unauthorized access</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>Your Rights (GDPR)</h2>
+        <p>Under GDPR, you have the following rights which you may exercise at any time by contacting <a href="mailto:contact@bansirix.com" class="contact-email">contact@bansirix.com</a>:</p>
+
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-title">Right of Access</div>
+            <p>Request a copy of the personal data we hold about you.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Right to Rectification</div>
+            <p>Correct inaccurate data directly in the App or by request.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Right to Erasure</div>
+            <p>Request deletion of your account and all associated data ("right to be forgotten").</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Right to Portability</div>
+            <p>Request export of your data in a structured format.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Right to Restriction</div>
+            <p>Request limitation of data processing in certain circumstances.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">Right to Object</div>
+            <p>Object to processing based on legitimate interests.</p>
+          </div>
+        </div>
+
+        <p>You also have the right to lodge a complaint with the <strong>Romanian National Supervisory Authority for Personal Data Processing (ANSPDCP)</strong> — <a href="https://www.dataprotection.ro" target="_blank" rel="noopener" style="color:var(--accent)">www.dataprotection.ro</a>, or your local supervisory authority.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Data Retention</h2>
+        <p>We retain your data for the duration of your account activity. Upon account deletion:</p>
+        <ul>
+          <li>All personally identifiable data is permanently deleted within <strong>30 days</strong></li>
+          <li>Anonymized aggregated statistics data may be retained thereafter</li>
+          <li>Certain data may be retained for longer periods if required by fiscal or accounting legislation</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>International Data Transfers</h2>
+        <p>Some processors (Supabase, Anthropic, RevenueCat) may store or process data on servers outside the European Economic Area. We ensure transfers are made with adequate safeguards, including <strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">09</div>
+        <h2>Age Restrictions</h2>
+        <p>BANSIRIX is intended exclusively for professional and commercial use by persons aged <strong>18 or over</strong> and/or authorized legal entities. We do not knowingly collect data from persons under 18. If you believe a minor has used the App, please contact us immediately.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">10</div>
+        <h2>Policy Changes</h2>
+        <p>We reserve the right to update this policy. We will notify you of significant changes via email or in-App notification at least <strong>14 days</strong> before the changes take effect. Continued use of the App after the effective date constitutes acceptance of the changes.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">11</div>
+        <h2>Contact</h2>
+        <div class="contact-box">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <p style="color:var(--text); font-weight:500; margin-bottom:8px;">Data Protection Contact</p>
+            <p>Email: <a href="mailto:contact@bansirix.com" class="contact-email">contact@bansirix.com</a></p>
+            <p>App: BANSIRIX — Offer, Invoice & Work Order Management</p>
+            <p>Website: <a href="https://bansirix.com" style="color:var(--accent)">bansirix.com</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /lang-en -->
+
+  </div><!-- /content -->
+
+  <footer>
+    <div class="footer-brand">BANSIRIX</div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Use</a>
+      <a href="mailto:contact@bansirix.com">Contact</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    document.querySelector(`[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.getElementById('title-ro').style.display = lang === 'ro' ? '' : 'none';
+    document.getElementById('title-en').style.display = lang === 'en' ? '' : 'none';
+    document.getElementById('meta-updated-ro').style.display = lang === 'ro' ? '' : 'none';
+    document.getElementById('meta-updated-en').style.display = lang === 'en' ? '' : 'none';
+  }
+</script>
+</body>
+</html>
