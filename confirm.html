@@ -1,254 +1,56 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Email confirmat — BANSIRIX</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #080B0F;
-      --surface: #0F1318;
-      --surface2: #161B22;
-      --border: rgba(255,255,255,0.06);
-      --accent: #2BC0AE;
-      --accent2: #1A9E8F;
-      --text: #E8EDF2;
-      --text-muted: #6B7685;
-      --text-dim: #9AA5B4;
-    }
+<script>
+if (window.location.pathname === '/confirm') {
+  document.addEventListener('DOMContentLoaded', function() {
+    document.documentElement.style.cssText = 'margin:0;padding:0;background:#080B0F;';
+    document.body.innerHTML = '';
+    document.body.style.cssText = 'margin:0;padding:0;background:#080B0F;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;width:100%;';
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 15px;
-      line-height: 1.75;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Background texture */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 50% at 10% 0%, rgba(43,192,174,0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 90% 100%, rgba(43,192,174,0.04) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 480px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 24px;
-      text-align: center;
-    }
-
-    /* Logo */
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .logo-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 48px;
-    }
-
-    /* Card */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 48px 40px;
-    }
-
-    /* Icon */
-    .icon-wrap {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: rgba(43,192,174,0.1);
-      border: 1.5px solid rgba(43,192,174,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-    }
-
-    .icon-wrap svg {
-      width: 36px;
-      height: 36px;
-      stroke: var(--accent);
-      stroke-width: 2.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .title {
-      font-family: 'Syne', sans-serif;
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-
-    .description {
-      font-size: 15px;
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-
-    .description strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .divider {
-      width: 40px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 2px;
-      margin: 0 auto 32px;
-      opacity: 0.4;
-    }
-
-    .steps {
-      text-align: left;
-      background: var(--surface2);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin-bottom: 32px;
-    }
-
-    .steps-title {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--text-dim);
-      margin-bottom: 10px;
-    }
-
-    .step:last-child { margin-bottom: 0; }
-
-    .step-num {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(43,192,174,0.12);
-      border: 1px solid rgba(43,192,174,0.25);
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    /* Footer */
-    footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 40px;
-      text-align: center;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      opacity: 0.8;
-    }
-
-    footer a:hover { opacity: 1; }
-
-    @media (max-width: 520px) {
-      .card { padding: 36px 24px; }
-      .title { font-size: 20px; }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="wrapper">
-
-    <div class="logo">BANSIRIX</div>
-    <div class="logo-sub">Gestionare Oferte</div>
-
-    <div class="card">
-      <div class="icon-wrap">
-        <svg viewBox="0 0 24 24">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
+    var el = document.createElement('div');
+    el.innerHTML = `
+      <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+      <style>
+        *{box-sizing:border-box;}
+        :root{--accent:#2BC0AE;--surface:#0F1318;--surface2:#161B22;--border:rgba(255,255,255,0.06);--text:#E8EDF2;--text-dim:#9AA5B4;--text-muted:#6B7685;}
+        body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(43,192,174,0.04) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 90% 100%,rgba(43,192,174,0.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
+        .bsx-wrap{position:relative;z-index:1;max-width:440px;width:100%;margin:0 auto;padding:32px 20px;text-align:center;font-family:'DM Sans',sans-serif;}
+        .bsx-logo{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;}
+        .bsx-logo-sub{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
+        .bsx-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px 24px;}
+        .bsx-icon{width:64px;height:64px;border-radius:50%;background:rgba(43,192,174,0.1);border:1.5px solid rgba(43,192,174,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+        .bsx-icon svg{width:30px;height:30px;stroke:var(--accent);stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+        .bsx-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--text);margin-bottom:10px;}
+        .bsx-desc{font-size:14px;color:var(--text-dim);line-height:1.65;margin-bottom:22px;}
+        .bsx-desc strong{color:var(--accent);font-weight:600;}
+        .bsx-divider{width:36px;height:2px;background:var(--accent);border-radius:2px;margin:0 auto 22px;opacity:0.4;}
+        .bsx-steps{text-align:left;background:var(--surface2);border-radius:12px;padding:16px 18px;}
+        .bsx-steps-title{font-size:10px;font-weight:600;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+        .bsx-step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-dim);margin-bottom:9px;}
+        .bsx-step:last-child{margin-bottom:0;}
+        .bsx-num{width:20px;height:20px;border-radius:50%;background:rgba(43,192,174,0.12);border:1px solid rgba(43,192,174,0.25);color:var(--accent);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+        .bsx-footer{margin-top:24px;font-size:11px;color:var(--text-muted);}
+        .bsx-footer a{color:var(--accent);text-decoration:none;opacity:0.8;}
+      </style>
+      <div class="bsx-wrap">
+        <div class="bsx-logo">BANSIRIX</div>
+        <div class="bsx-logo-sub">Gestionare Oferte</div>
+        <div class="bsx-card">
+          <div class="bsx-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h1 class="bsx-title">Email confirmat!</h1>
+          <p class="bsx-desc">Contul tău a fost activat cu succes.<br/>Te poți loga acum în <strong>aplicația BANSIRIX</strong>.</p>
+          <div class="bsx-divider"></div>
+          <div class="bsx-steps">
+            <div class="bsx-steps-title">Pași următori</div>
+            <div class="bsx-step"><span class="bsx-num">1</span><span>Deschide aplicația BANSIRIX pe telefon</span></div>
+            <div class="bsx-step"><span class="bsx-num">2</span><span>Loghează-te cu adresa de email și parola</span></div>
+            <div class="bsx-step"><span class="bsx-num">3</span><span>Completează datele companiei și începe</span></div>
+          </div>
+        </div>
+        <div class="bsx-footer">© 2025 BANSIRIX &nbsp;·&nbsp; <a href="/privacy">Confidențialitate</a> &nbsp;·&nbsp; <a href="/terms">Termeni</a></div>
       </div>
-
-      <h1 class="title">Email confirmat!</h1>
-      <p class="description">
-        Contul tău a fost activat cu succes.<br />
-        Te poți loga acum în <strong>aplicația BANSIRIX</strong>.
-      </p>
-
-      <div class="divider"></div>
-
-      <div class="steps">
-        <div class="steps-title">Pași următori</div>
-        <div class="step">
-          <span class="step-num">1</span>
-          <span>Deschide aplicația BANSIRIX pe telefon</span>
-        </div>
-        <div class="step">
-          <span class="step-num">2</span>
-          <span>Loghează-te cu adresa de email și parola</span>
-        </div>
-        <div class="step">
-          <span class="step-num">3</span>
-          <span>Completează datele companiei și începe</span>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      © 2025 BANSIRIX &nbsp;·&nbsp;
-      <a href="/privacy">Confidențialitate</a> &nbsp;·&nbsp;
-      <a href="/terms">Termeni</a>
-    </footer>
-
-  </div>
-
-</body>
-</html>
+    `;
+    document.body.appendChild(el);
+  });
+}
+</script>
