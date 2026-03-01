@@ -6,6 +6,7 @@
   <title>BANSIRIX — Gestionare Oferte, Facturi & Lucrări</title>
   <meta name="description" content="Aplicația pentru firme mici din România. Oferte de preț, facturi proforme, gestionare lucrări, semnătură digitală și scanare AI — totul într-un singur loc." />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="https://bansirix.com/logo.png" />
   <style>
     :root {
       --bg: #080B0F;
@@ -70,7 +71,7 @@
 
     .nav-logo {
       font-family: 'Syne', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 20px;
       color: var(--accent);
       letter-spacing: 3px;
@@ -138,13 +139,13 @@
     }
 
     .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: clamp(36px, 6vw, 64px);
-      line-height: 1.1;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 6vw, 60px);
+      line-height: 1.15;
       color: var(--text);
       margin-bottom: 24px;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
     }
 
     .hero h1 span { color: var(--accent); }
@@ -258,7 +259,7 @@
     .stat-value {
       font-family: 'Syne', sans-serif;
       font-size: 32px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--accent);
       margin-bottom: 4px;
     }
@@ -285,13 +286,14 @@
     }
 
     .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 800;
       font-size: clamp(24px, 4vw, 36px);
       color: var(--text);
       text-align: center;
       margin-bottom: 16px;
-      line-height: 1.2;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
     }
 
     .section-title span { color: var(--accent); }
@@ -389,7 +391,7 @@
       justify-content: center;
       font-family: 'Syne', sans-serif;
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--accent);
       margin: 0 auto 16px;
     }
@@ -457,7 +459,7 @@
     .plan-price {
       font-family: 'Syne', sans-serif;
       font-size: 40px;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text);
       line-height: 1;
       margin-bottom: 4px;
@@ -582,7 +584,7 @@
     .cta-card h2 {
       font-family: 'Syne', sans-serif;
       font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text);
       margin-bottom: 16px;
       position: relative;
@@ -620,7 +622,7 @@
 
     .footer-brand {
       font-family: 'Syne', sans-serif;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 16px;
       letter-spacing: 3px;
       color: var(--accent);
@@ -673,7 +675,10 @@
   <nav>
     <div class="wrapper">
       <div class="nav-inner">
-        <a href="/" class="nav-logo">BANSIRIX</a>
+        <a href="/" class="nav-logo" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
+          <img src="https://bansirix.com/logo.png" alt="BX" width="32" height="32" style="border-radius:8px;display:block;" />
+          BANSIRIX
+        </a>
         <div class="nav-links">
           <a href="#functii">Funcții</a>
           <a href="#cum-functioneaza">Cum funcționează</a>
@@ -709,17 +714,15 @@
 
       <div class="store-badges" id="download">
         <a href="#" class="store-badge">
-          <span class="store-badge-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3DDC84" xmlns="http://www.w3.org/2000/svg"><path d="M17.523 15.3414c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m-11.046 0c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg></span>
+          <span class="store-badge-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#2BC0AE">
+              <path d="M17.523 15.341a.97.97 0 1 0 0-1.94.97.97 0 0 0 0 1.94zm-11.046 0a.97.97 0 1 0 0-1.94.97.97 0 0 0 0 1.94zM6.714 4.486 4.974 2.746a.4.4 0 0 1 .565-.565l1.902 1.902A9.927 9.927 0 0 1 12 3.2c1.147 0 2.249.192 3.275.541L17.46 1.84a.4.4 0 0 1 .566.566l-1.74 1.74C18.597 5.58 20 8.025 20 10.8H4c0-2.775 1.403-5.22 2.714-6.314z"/>
+              <path d="M2 11.6C2 10.716 2.716 10 3.6 10h16.8c.884 0 1.6.716 1.6 1.6v7.2c0 .884-.716 1.6-1.6 1.6H3.6C2.716 20.4 2 19.684 2 18.8V11.6zm2.4 9.6v1.6a.8.8 0 0 0 1.6 0V21.2H4.4zm13.6 0v1.6a.8.8 0 0 0 1.6 0V21.2H18z" opacity=".5"/>
+            </svg>
+          </span>
           <div class="store-badge-text">
-            <span class="store-badge-sub">Disponibil pe</span>
+            <span class="store-badge-sub">Descarcă pe</span>
             <span class="store-badge-name">Google Play</span>
-          </div>
-        </a>
-        <a href="#" class="store-badge" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
-          <span class="store-badge-icon" style="font-size:22px;"></span>
-          <div class="store-badge-text">
-            <span class="store-badge-sub">În curând pe</span>
-            <span class="store-badge-name">App Store</span>
           </div>
         </a>
       </div>
@@ -735,8 +738,8 @@
           <div class="stat-label">Date securizate în cloud</div>
         </div>
         <div>
-          <div class="stat-value">€4,99</div>
-          <div class="stat-label">Plan premium / lună</div>
+          <div class="stat-value">FREE</div>
+          <div class="stat-label">Aplicație gratuită</div>
         </div>
         <div>
           <div class="stat-value">AI</div>
@@ -775,12 +778,6 @@
           <div class="feature-icon">🔧</div>
           <div class="feature-title">Gestionare lucrări</div>
           <p class="feature-desc">Planifică și urmărește progresul lucrărilor. Statusuri clare, calendar integrat și notificări pentru fiecare termen.</p>
-        </div>
-
-        <div class="feature-card featured">
-          <div class="feature-icon">🤖</div>
-          <div class="feature-title">Scanare AI documente</div>
-          <p class="feature-desc">Fotografiază o factură de la furnizor și produsele sunt extrase automat în catalogul tău. Economisești ore de introducere manuală.</p>
         </div>
 
         <div class="feature-card">
@@ -895,44 +892,26 @@
   <section class="section" style="padding-top: 0;" id="preturi">
     <div class="wrapper">
       <div class="section-label">Prețuri</div>
-      <h2 class="section-title">Simplu și <span>transparent</span></h2>
-      <p class="section-sub">Pornești gratuit. Treci la premium când ești gata să crești.</p>
+      <h2 class="section-title">100% <span>Gratuit</span></h2>
+      <p class="section-sub">Toate funcțiile disponibile fără costuri. Descarcă și pornești imediat.</p>
 
-      <div class="pricing-grid">
-
-        <div class="plan-card">
-          <div class="plan-name">Gratuit</div>
-          <div class="plan-price">0 <span>RON</span></div>
-          <div class="plan-price-sub">pentru totdeauna</div>
-          <ul class="plan-features">
-            <li><span class="plan-check">✓</span> Oferte de preț</li>
-            <li><span class="plan-check">✓</span> Bază de clienți</li>
-            <li><span class="plan-check">✓</span> Catalog produse</li>
-            <li><span class="plan-check">✓</span> Generare PDF</li>
-            <li><span class="plan-x">—</span> Scanare AI documente</li>
-            <li><span class="plan-x">—</span> Facturi proforme</li>
-            <li><span class="plan-x">—</span> Rapoarte avansate</li>
-          </ul>
-          <a href="#download" class="plan-btn plan-btn-free">Descarcă gratuit</a>
-        </div>
-
-        <div class="plan-card premium">
-          <div class="plan-badge">POPULAR</div>
-          <div class="plan-name">Premium</div>
-          <div class="plan-price">€4<span>,99/lună</span></div>
-          <div class="plan-price-sub">anulare oricând</div>
-          <ul class="plan-features">
-            <li><span class="plan-check">✓</span> Tot ce include Gratuit</li>
-            <li><span class="plan-check">✓</span> Scanare AI documente</li>
+      <div style="max-width:480px;margin:0 auto;">
+        <div class="plan-card premium" style="text-align:center;">
+          <div class="plan-name">BANSIRIX</div>
+          <div class="plan-price" style="font-size:52px;">Gratuit</div>
+          <div class="plan-price-sub" style="margin-bottom:28px;">pentru totdeauna</div>
+          <ul class="plan-features" style="text-align:left;margin-bottom:32px;">
+            <li><span class="plan-check">✓</span> Oferte de preț profesionale</li>
             <li><span class="plan-check">✓</span> Facturi proforme</li>
-            <li><span class="plan-check">✓</span> Rapoarte & statistici</li>
-            <li><span class="plan-check">✓</span> Semnătură digitală</li>
             <li><span class="plan-check">✓</span> Gestionare lucrări</li>
-            <li><span class="plan-check">✓</span> Notificări avansate</li>
+            <li><span class="plan-check">✓</span> Catalog produse & servicii</li>
+            <li><span class="plan-check">✓</span> Bază de clienți</li>
+            <li><span class="plan-check">✓</span> Semnătură digitală</li>
+            <li><span class="plan-check">✓</span> Rapoarte & statistici</li>
+            <li><span class="plan-check">✓</span> Notificări & calendar</li>
           </ul>
-          <a href="#download" class="plan-btn plan-btn-premium">Încearcă gratuit</a>
+          <a href="#download" class="plan-btn plan-btn-premium">Descarcă gratuit pe Android</a>
         </div>
-
       </div>
     </div>
   </section>
@@ -945,17 +924,15 @@
         <p>Descarcă BANSIRIX gratuit și trimite prima ta ofertă digitală astăzi.</p>
         <div class="cta-actions">
           <a href="#" class="store-badge">
-            <span class="store-badge-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="#3DDC84" xmlns="http://www.w3.org/2000/svg"><path d="M17.523 15.3414c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m-11.046 0c-.5511 0-.9993-.4482-.9993-.9993s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993s-.4482.9993-.9993.9993m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg></span>
+            <span class="store-badge-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#2BC0AE">
+                <path d="M17.523 15.341a.97.97 0 1 0 0-1.94.97.97 0 0 0 0 1.94zm-11.046 0a.97.97 0 1 0 0-1.94.97.97 0 0 0 0 1.94zM6.714 4.486 4.974 2.746a.4.4 0 0 1 .565-.565l1.902 1.902A9.927 9.927 0 0 1 12 3.2c1.147 0 2.249.192 3.275.541L17.46 1.84a.4.4 0 0 1 .566.566l-1.74 1.74C18.597 5.58 20 8.025 20 10.8H4c0-2.775 1.403-5.22 2.714-6.314z"/>
+                <path d="M2 11.6C2 10.716 2.716 10 3.6 10h16.8c.884 0 1.6.716 1.6 1.6v7.2c0 .884-.716 1.6-1.6 1.6H3.6C2.716 20.4 2 19.684 2 18.8V11.6zm2.4 9.6v1.6a.8.8 0 0 0 1.6 0V21.2H4.4zm13.6 0v1.6a.8.8 0 0 0 1.6 0V21.2H18z" opacity=".5"/>
+              </svg>
+            </span>
             <div class="store-badge-text">
               <span class="store-badge-sub">Descarcă pe</span>
               <span class="store-badge-name">Google Play</span>
-            </div>
-          </a>
-          <a href="#" class="store-badge" style="opacity:0.5; cursor:not-allowed; pointer-events:none;">
-            <span class="store-badge-icon" style="font-size:22px;"></span>
-            <div class="store-badge-text">
-              <span class="store-badge-sub">În curând pe</span>
-              <span class="store-badge-name">App Store</span>
             </div>
           </a>
         </div>
@@ -974,6 +951,11 @@
         <div class="footer-links">
           <a href="/privacy">Confidențialitate</a>
           <a href="/terms">Termeni</a>
-          <a href="/cdn-cgi/l/email-protection#3e5d51504a5f5d4a7e5c5f504d574c5746105d5153">Contact</a>
+          <a href="mailto:contact@bansirix.com">Contact</a>
         </div>
-      </di
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
