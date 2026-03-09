@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Email confirmat — BANSIRIX</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #080B0F;
@@ -59,13 +59,12 @@
 
     /* Logo */
     .logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-size: 28px;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--text);
       letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 8px;
     }
 
     .logo-sub {
@@ -73,7 +72,6 @@
       color: var(--text-muted);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 48px;
     }
 
     /* Card */
@@ -108,7 +106,7 @@
     }
 
     .title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-size: 24px;
       font-weight: 700;
       color: var(--text);
@@ -207,8 +205,13 @@
 
   <div class="wrapper">
 
-    <div class="logo">BANSIRIX</div>
-    <div class="logo-sub">Gestionare Oferte</div>
+    <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:48px;">
+      <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <img src="https://bansirix.com/logo.png" alt="BX" width="40" height="40" style="border-radius:10px;display:block;" />
+        <div class="logo">BANSIRIX</div>
+      </div>
+      <div class="logo-sub">De la OFERTĂ, la FACTURĂ</div>
+    </div>
 
     <div class="card">
       <div class="icon-wrap">
@@ -243,7 +246,7 @@
     </div>
 
     <footer>
-      © 2025 BANSIRIX &nbsp;·&nbsp;
+      © 2026 BANSIRIX &nbsp;·&nbsp;
       <a href="/privacy">Confidențialitate</a> &nbsp;·&nbsp;
       <a href="/terms">Termeni</a>
     </footer>
