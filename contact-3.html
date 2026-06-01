@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — Bansirix</title>
+<meta name="description" content="Contactează echipa Bansirix — suport, training gratuit, întrebări despre aplicație." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://bansirix.com/contact" />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --teal: #2BC0AE;
+  --teal-dim: #1D9E75;
+  --teal-pale: rgba(43,192,174,0.08);
+  --dark: #0A0C0F;
+  --card: #13161B;
+  --card2: #1A1E25;
+  --border: rgba(255,255,255,0.07);
+  --text: #F0F2F0;
+  --muted: #8A9190;
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--dark); color: var(--text); overflow-x: hidden; }
+
+.hero-bg {
+  position: fixed; inset: 0; z-index: -1;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(43,192,174,0.05) 0%, transparent 60%);
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 68px;
+  background: rgba(10,12,15,0.88); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-img { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
+.nav-logo-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: var(--teal); display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 14px; color: #000;
+}
+.nav-logo-text { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--text); letter-spacing: 2px; }
+.nav-back {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 500; color: var(--muted);
+  text-decoration: none; padding: 8px 14px; border-radius: 6px;
+  transition: all 0.2s; border: 1px solid var(--border);
+}
+.nav-back:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+.page-hero {
+  padding: 140px 48px 80px;
+  max-width: 900px; margin: 0 auto; text-align: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(43,192,174,0.1); border: 1px solid rgba(43,192,174,0.25);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; font-weight: 600; color: var(--teal);
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px;
+}
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.page-hero h1 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px); line-height: 1.05; text-transform: uppercase; margin-bottom: 20px;
+}
+.page-hero h1 span { color: var(--teal); }
+.page-hero p { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 520px; margin: 0 auto; }
+
+.main-wrap { max-width: 960px; margin: 0 auto; padding: 0 48px 120px; }
+
+/* CONTACT CHANNELS */
+.channels-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;
+}
+.channel-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+  padding: 36px 32px; text-decoration: none; color: var(--text);
+  transition: all 0.25s; display: flex; flex-direction: column; gap: 16px;
+  position: relative; overflow: hidden;
+}
+.channel-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.25s;
+}
+.channel-card.wa::before { background: linear-gradient(135deg, rgba(37,211,102,0.06) 0%, transparent 60%); }
+.channel-card.email::before { background: linear-gradient(135deg, rgba(43,192,174,0.06) 0%, transparent 60%); }
+.channel-card:hover { transform: translateY(-3px); }
+.channel-card.wa:hover { border-color: rgba(37,211,102,0.35); box-shadow: 0 12px 40px rgba(37,211,102,0.1); }
+.channel-card.email:hover { border-color: rgba(43,192,174,0.35); box-shadow: 0 12px 40px rgba(43,192,174,0.1); }
+.channel-card:hover::before { opacity: 1; }
+.channel-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.channel-card.wa .channel-icon { background: rgba(37,211,102,0.12); }
+.channel-card.email .channel-icon { background: rgba(43,192,174,0.12); }
+.channel-label {
+  font-family: var(--font-display); font-size: 11px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px;
+}
+.channel-card.wa .channel-label { color: #25D366; }
+.channel-card.email .channel-label { color: var(--teal); }
+.channel-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+.channel-detail { font-size: 14px; color: var(--muted); }
+.channel-speed {
+  margin-top: auto; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 600;
+}
+.channel-card.wa .channel-speed { color: #25D366; }
+.channel-card.email .channel-speed { color: var(--teal); }
+
+/* FAQ */
+.faq-title {
+  font-family: var(--font-display); font-size: 11px; font-weight: 600;
+  letter-spacing: 3px; color: var(--teal); text-transform: uppercase;
+  margin-bottom: 20px; margin-top: 48px;
+}
+.faq-section-title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(22px, 3vw, 32px); text-transform: uppercase; margin-bottom: 32px;
+}
+.faq-section-title span { color: var(--teal); }
+
+.faq-list { display: flex; flex-direction: column; gap: 2px; }
+.faq-item {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+}
+.faq-q {
+  padding: 20px 24px; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  font-weight: 600; font-size: 15px;
+  list-style: none; transition: background 0.2s;
+  user-select: none;
+}
+.faq-q:hover { background: rgba(255,255,255,0.03); }
+.faq-q::marker, .faq-q::-webkit-details-marker { display: none; }
+.faq-arrow {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(43,192,174,0.1); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: transform 0.25s, background 0.2s;
+}
+details[open] .faq-arrow { transform: rotate(180deg); background: rgba(43,192,174,0.2); }
+.faq-a {
+  padding: 0 24px 20px;
+  font-size: 14px; color: var(--muted); line-height: 1.75;
+  border-top: 1px solid var(--border); padding-top: 16px;
+}
+.faq-a a { color: var(--teal); text-decoration: none; }
+.faq-a a:hover { text-decoration: underline; }
+
+/* CTA FINAL */
+.cta-strip {
+  margin-top: 64px;
+  background: linear-gradient(135deg, rgba(43,192,174,0.08) 0%, rgba(29,158,117,0.04) 100%);
+  border: 1px solid rgba(43,192,174,0.2); border-radius: 20px;
+  padding: 40px 48px;
+  display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+}
+.cta-strip-left h3 {
+  font-family: var(--font-display); font-weight: 700; font-size: 24px;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.cta-strip-left h3 span { color: var(--teal); }
+.cta-strip-left p { font-size: 14px; color: var(--muted); }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--teal); color: #000;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
+  padding: 13px 28px; border-radius: 10px;
+  text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(43,192,174,0.25);
+}
+.btn-primary:hover { background: #1D9E75; transform: translateY(-2px); }
+
+/* WA FLOAT */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 99;
+  display: flex; align-items: center; gap: 10px;
+  background: #25D366; color: #fff;
+  padding: 12px 20px; border-radius: 100px;
+  text-decoration: none; font-weight: 600; font-size: 14px;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35); transition: all 0.2s;
+}
+.wa-float:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+
+footer { background: var(--card); border-top: 1px solid var(--border); padding: 40px 48px; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-brand { font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: 2px; }
+.footer-brand span { color: var(--teal); }
+.footer-copy { font-size: 13px; color: var(--muted); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--teal); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .page-hero { padding: 120px 20px 60px; }
+  .main-wrap { padding: 0 20px 80px; }
+  .channels-grid { grid-template-columns: 1fr; }
+  .cta-strip { padding: 28px 24px; flex-direction: column; }
+  footer { padding: 32px 20px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="hero-bg"></div>
+
+<nav>
+  <a href="https://bansirix.com" class="nav-logo">
+    <img src="logo.png" alt="Bansirix" class="nav-logo-img"/>
+    <div class="nav-logo-text">BANSIRIX</div>
+  </a>
+  <a href="https://bansirix.com" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Înapoi la site
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-badge">Suntem aici</div>
+  <h1>Vorbim<br/><span>direct</span></h1>
+  <p>Nicio coadă de așteptare, niciun bot. Răspundem personal la orice întrebare despre aplicație.</p>
+</div>
+
+<div class="main-wrap">
+
+  <div class="channels-grid">
+    <a href="https://wa.me/40746698531?text=Salut%20Cosmin%2C%20am%20o%20%C3%AEntrebare%20despre%20Bansirix." target="_blank" class="channel-card wa">
+      <div class="channel-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div>
+        <div class="channel-label">WhatsApp</div>
+        <div class="channel-title">0746 698 531</div>
+        <div class="channel-detail">Cel mai rapid canal. Mesaj direct, răspuns personal.</div>
+      </div>
+      <div class="channel-speed">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Răspuns în câteva ore
+      </div>
+    </a>
+
+    <a href="mailto:office@bansirix.com" class="channel-card email">
+      <div class="channel-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2BC0AE" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div>
+        <div class="channel-label">Email</div>
+        <div class="channel-title">office@bansirix.com</div>
+        <div class="channel-detail">Pentru training, suport sau parteneriate.</div>
+      </div>
+      <div class="channel-speed">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Răspuns în 24 de ore
+      </div>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-title">Întrebări frecvente</div>
+  <h2 class="faq-section-title">Ai o <span>întrebare?</span></h2>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary class="faq-q">
+        Bansirix este complet gratuit?
+        <span class="faq-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="faq-a">Da, toate funcțiile sunt complet gratuite până pe 1 iunie 2026, fără niciun card necesar. Vom notifica utilizatorii cu minimum 30 de zile înainte de activarea planurilor plătite.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Pe ce telefoane funcționează aplicația?
+        <span class="faq-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="faq-a">Bansirix este disponibil acum pe <strong>Android</strong> prin Google Play. Versiunea pentru iOS (iPhone) este în pregătire și va fi lansată în luna viitoare.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Cum funcționează training-ul gratuit?
+        <span class="faq-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="faq-a">Fiecare utilizator nou poate beneficia de o sesiune de training 1-la-1 de 30 de minute pe Google Meet. Acoperim setup-ul inițial, catalogul de produse și prima ofertă reală. <a href="https://bansirix.com/training">Detalii și programare →</a></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Datele mele și ale clienților mei sunt în siguranță?
+        <span class="faq-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="faq-a">Da. Toate datele sunt criptate și stocate prin serverele noastre pe servere în UE. Nu vindem și nu partajăm datele tale cu terți. <a href="https://bansirix.com/privacy">Citește politica de confidențialitate →</a></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Pot adăuga logo-ul firmei mele pe oferte?
+        <span class="faq-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="faq-a">Da. La setup inițial încarci logo-ul firmei, CUI-ul, adresa și datele de contact. Acestea apar automat pe toate PDF-urile generate — oferte, procese verbale, situații de lucrări.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">
+        Ce înseamnă scanarea AI a documentelor?
+        <span class="faq-arrow"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="faq-a">Poți fotografia o ofertă sau factură de la un furnizor, iar aplicația extrage automat produsele și prețurile și le adaugă în oferta ta. Fără tastare manuală.</div>
+    </details>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-strip-left">
+      <h3>Nu ai găsit <span>răspunsul?</span></h3>
+      <p>Scrie-ne direct — răspundem în câteva ore.</p>
+    </div>
+    <a href="https://wa.me/40746698531?text=Salut%2C%20am%20o%20%C3%AEntrebare%20despre%20Bansirix." target="_blank" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Scrie pe WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<a href="https://wa.me/40746698531?text=Salut%2C%20am%20v%C4%83zut%20aplica%C8%9Bia%20Bansirix%20%C8%99i%20vreau%20s%C4%83%20aflu%20mai%20multe."
+   class="wa-float" target="_blank" rel="noopener">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Contactează-ne</span>
+</a>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">BAN<span>SI</span>RIX</div>
+    <div class="footer-links">
+      <a href="https://bansirix.com">Acasă</a>
+      <a href="https://bansirix.com/training">Training</a>
+      <a href="https://bansirix.com/privacy">Confidențialitate</a>
+      <a href="https://bansirix.com/terms">Termeni</a>
+    </div>
+    <div class="footer-copy">© 2026 Bansirix · Construit în România 🇷🇴</div>
+  </div>
+</footer>
+
+</body>
+</html>
